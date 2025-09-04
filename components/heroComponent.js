@@ -6,7 +6,7 @@ function HeroComponent() {
     <div className='px-8 md:px-25 flex flex-col w-full h-[527px] md:h-[760px] '>
       <div className='flex flex-col gap-5 md:gap-8  w-full'>
         <div className='w-full relative h-[311px] md:h-[536px] '>
-    <Image src="/paste image.png" fill  className='md:hidden object-cover'/>
+    <Image src="/slider-mobile.png" fill  className='md:hidden object-cover'/>
     <Image src="/Slider.png" fill  className='hidden md:block object-cover'/>
         </div>
     

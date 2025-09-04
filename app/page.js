@@ -1,6 +1,7 @@
+import MainComponent from "../components/mainComponent";
 import HeroComponent from "../components/heroComponent";
 import Navbar from "../components/navbar";
-HeroComponent;
+
 import React from "react";
 
 function HomePage() {
@@ -8,6 +9,7 @@ function HomePage() {
     <>
       <Navbar />
       <HeroComponent />
+      <MainComponent />
     </>
   );
 }
