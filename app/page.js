@@ -3,8 +3,12 @@ import HeroComponent from "../components/heroComponent";
 import Navbar from "../components/navbar";
 import NewArrivals from "../components/newArrivals";
 import About from "../components/about";
+import Article from "../components/article";
+import Newsletter from "../components/newsletter";
+import Footer from "../components/footer";
+Footer
 
-import React from "react";
+
 
 
 function HomePage() {
@@ -15,6 +19,9 @@ function HomePage() {
       <MainComponent />
       <NewArrivals />
       <About />
+      <Article/>
+      <Newsletter />
+      <Footer/>
     </>
   );
 }

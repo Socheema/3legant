@@ -72,8 +72,8 @@ function MainComponent() {
               <Image
                 src="/Paste image.png"
                 alt="kitchen"
-                layout="fill"
-                objectFit="cover"
+                fill
+                className="object-cover"
               />
               {/* DESCRIPTION */}
               <div className="absolute bottom-8 left-8 flex flex-col items-start gap-1 w-[247px]">
