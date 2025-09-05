@@ -265,12 +265,21 @@ function NewArrivals() {
         </div>
       </div>
       {/* RULE DIVIDER */}
-      <div className="flex w-full h-[3px]">
-        <div className="flex-2 bg-[#141718]"></div>
-        <div className="flex-1 bg-[#6C7275]"></div>
+      <div className="flex px-8 md:px-25 w-full md:hidden">
+        <div className="flex h-[3px] border w-full ">
+          <div className="flex-2 bg-[#141718]"></div>
+          <div className="flex-1 bg-[#6C7275]"></div>
+        </div>
+      
       </div>
+        <div className="hidden flex h-[3px] border w-full ">
+          <div className="flex-2 bg-[#141718]"></div>
+          <div className="flex-1 bg-[#6C7275]"></div>
+        </div>
       {/* MORE PRODUCTS */}
-      <ShopNow text="More Products" fontSize="lg" />
+      <div className="md:hidden">
+        <ShopNow text="More Products" fontSize="lg" />
+      </div>
     </div>
   );
 }

@@ -2,7 +2,6 @@ import { Space_Grotesk } from "next/font/google";
 import "./globals.css";
 
 
-
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"], // pick weights you need
@@ -16,7 +15,8 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={spaceGrotesk.className}>{children}</body>
+      <body className={`${spaceGrotesk.className} `}>
+        {children}</body>
     </html>
   );
 }

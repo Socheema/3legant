@@ -1,6 +1,9 @@
 /* In your main CSS file (globals.css) */
 @import "tailwindcss";
 
+
+
+
 :root {
   --color-primary-1: #000000;
   --color-blue: #377DFF;
