@@ -6,7 +6,7 @@ function NewArrivals() {
   return (
     <div
       className="flex flex-col px-8 md:px-25 items-start justify-between mt-8
-    gap-4 md:gap-8 w-full border"
+    gap-4 md:gap-8 w-full"
     >
       <div className="flex flex-col md:flex-row items-start justify-between w-full">
         <h1 className="text-[#141718] text-lg md:text-4xl lg:text-6xl font-normal">
@@ -266,12 +266,12 @@ function NewArrivals() {
       </div>
       {/* RULE DIVIDER */}
       <div className="flex px-8 md:px-25 w-full md:hidden">
-        <div className="flex h-[3px] border w-full ">
+        <div className="flex h-[3px] w-full ">
           <div className="flex-2 bg-[#141718]"></div>
           <div className="flex-1 bg-[#6C7275]"></div>
         </div>
       </div>
-      <div className="hidden flex h-[3px] border w-full ">
+      <div className="hidden flex h-[3px] w-full ">
         <div className="flex-2 bg-[#141718]"></div>
         <div className="flex-1 bg-[#6C7275]"></div>
       </div>
