@@ -6,7 +6,7 @@ import About from "../components/about";
 import Article from "../components/article";
 import Newsletter from "../components/newsletter";
 import Footer from "../components/footer";
-Footer
+
 
 
 
