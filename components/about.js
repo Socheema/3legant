@@ -10,69 +10,86 @@ function About() {
       <div className="flex flex-col md:flex-row p-8 gap-6 mt-2 md:mt-4 md:px-25 md:py-6">
         {/* MOBILE */}
         {/* TOP */}
-        <div className="flex w-[312px] h-[198px] items-center gap-2 md:hidden">
+        <div className="flex w-full h-[198px] items-center justify-between gap-4 md:hidden ">
           {/*FREE SHIPPING */}
-          <AboutCard
-            title="Free Shipping"
-            description="Order"
-            description1="above $200"
-            imgSrc="/fast delivery.svg"
-          />
+          <div >
+            <AboutCard
+              title="Free Shipping"
+              description="Order"
+              description1="above $200"
+              imgSrc="/fast delivery.svg"
+            />
+          </div>
           {/* MONEY BACK */}
-          <AboutCard
-            title="Money-back"
-            description="30 days"
-            description1="guarantee"
-            imgSrc="/money.svg"
-          />
+          <div >
+            <AboutCard
+              title="Money-back"
+              description="30 days"
+              description1="guarantee"
+              imgSrc="/money.svg"
+            />
+          </div>
         </div>
         {/*  BOTTOM*/}
-        <div className="flex w-[312px] h-[198px] items-center gap-2 md:hidden">
+        <div className="flex w-full h-[198px] items-center gap-4 md:hidden justify-between">
           {/*FREE SHIPPING */}
-          <AboutCard
-            title="Secure Payments"
-            description="Secured "
-            description1="by Stripe"
-            imgSrc="/fast delivery.svg"
-          />
+          <div >
+            <AboutCard
+              title="Secure Payments"
+              description="Secured "
+              description1="by Stripe"
+              imgSrc="/fast delivery.svg"
+            />
+          </div>
           {/* MONEY BACK */}
-          <AboutCard
-            title="24/7 support"
-            description="Phone and "
-            description1="Email support"
-            imgSrc="/call.svg"
-          />
+          <div >
+            <AboutCard
+              title="24/7 support"
+              description="Phone and "
+              description1="Email support"
+              imgSrc="/call.svg"
+            />
+          </div>
         </div>
         {/* DESKTOP */}
-        <div className="hidden md:flex items-center justify-between gap-14 w-2/3">
+        <div className="hidden md:flex items-center justify-between gap-4 w-full border">
           {/* FREE SHIPPING */}
-          <AboutCard
-            title="Free Shipping"
-            description="Order"
-            description1="above $200"
-            imgSrc="/fast delivery.svg"
-          />
+          <div >
+        
+            <AboutCard
+              title="Free Shipping"
+              description="Order"
+              description1="above $200"
+              imgSrc="/fast delivery.svg"
+            />
+          </div>
           {/* MONEY BACK */}
-          <AboutCard
-            title="Money-back"
-            description="30 days"
-            description1="guarantee"
-            imgSrc="/money.svg"
-          />
+          <div >
+            <AboutCard
+              title="Money-back"
+              description="30 days"
+              description1="guarantee"
+              imgSrc="/money.svg"
+            />
+          </div>
           {/* SECURE PAYMENTS */}
-          <AboutCard
-            title="Secure Payments"
-            description="Secured "
-            description1="by Stripe"
-            imgSrc="/fast delivery.svg"
-          />
+          <div >
+            <AboutCard
+              title="Secure Payments"
+              description="Secured "
+              description1="by Stripe"
+              imgSrc="/fast delivery.svg"
+            />
+          </div>
           {/* 24/7 SUPPORT */}
-          <AboutCard
-            title="24/7 support"
-            description="Phone and "
-            description1="Email support"
-            imgSrc="/call.svg"
-          />
+          <div >
+            <AboutCard
+              title="24/7 support"
+              description="Phone and "
+              description1="Email support"
+              imgSrc="/call.svg"
+            />
+          </div>
         </div>
       </div>
       {/* BOTTOM */}
@@ -94,7 +111,11 @@ function About() {
               HUNDREDS of <br /> New lower prices!
             </p>
             <p className="text-[#141718] text-lg">
-              It's more affordable than ever to give  every <span className="hidden md:flex tracking-tighter leading-1.5"><br/></span> room in your house a stylish makeover
+              It's more affordable than ever to give every{" "}
+              <span className="hidden md:flex tracking-tighter leading-1.5">
+                <br />
+              </span>{" "}
+              room in your house a stylish makeover
             </p>
             <ShopNow text="Shop Now" />
           </div>

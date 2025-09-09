@@ -52,7 +52,7 @@ function ActiveMobileMenu() {
               href="/"
               className={`${isHomePage(
                 "/"
-              )} border-b border-[#6C7275] w-full py-2 `}
+              )} border-b border-[#E8ECEF] w-full py-2 `}
             >
               Home
             </Link>

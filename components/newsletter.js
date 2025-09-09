@@ -7,10 +7,12 @@ function Newsletter() {
       {/* MOBILE */}
       <div className="md:hidden bg-[#F2F4F6] px-8 py-20 flex flex-col items-center justify-between gap-8 mt-8">
         <div>
-          <h3 className="text-[#141718] text-2xl">Join Our Newsletter</h3>
-          <small className="text-[#6C7275] text-sm">
-            Sign up for deals, new products, and promotions
-          </small>
+          <div className="flex items-center justify-center gap-4 flex-col w-[311px] h-[86px]">
+            <h3 className="text-[#141718] text-2xl">Join Our Newsletter</h3>
+            <small className="text-[#6C7275] text-sm">
+              Sign up for deals, new products, and promotions
+            </small>
+          </div>
         </div>
 
         {/* FORM CONTAINER */}

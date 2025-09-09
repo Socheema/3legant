@@ -3,7 +3,7 @@ import React from "react";
 
 function AboutCard({ title, description, description1, imgSrc }) {
   return (
-    <div className="flex w-[152px] md:[262px] h-[198px] md:h-[120px] items-start px-4 py-8 md:py-4 md:px-2 flex-col gap-4 bg-[#F3F5F7] ">
+    <div className="flex w-[170px] md:w-[252px] h-[198px] md:h-[220px] items-start px-4 py-8 md:py-10.5 md:px-8 flex-col gap-4  bg-[#F3F5F7] ">
       <div className=" relative w-10 h-10 md:w-8 md:h-8">
         <Image
           src={imgSrc}

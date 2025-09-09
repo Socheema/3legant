@@ -1,6 +1,8 @@
 import React from "react";
 import Image from "next/image";
 import ShopNow from "./shopNow";
+import MobileProductCardVariant from "./MobileProductCardVariant";
+
 
 function NewArrivals() {
   return (
@@ -17,252 +19,73 @@ function NewArrivals() {
           <ShopNow text="More Products" fontSize="lg" />
         </div>
       </div>
-      <div className="w-full h-[392px] max-w-[308px] md:max-w-[1039.5px] flex gap-4 overflow-x-auto scrollbar-hide snap-x snap-mandatory">
-        <div className="flex flex-col">
-          <div className="w-[231px] h-[307px] md:h-[349px] md:w-[262px] bg-[#6C7275] relative">
-            <Image
-              src="/product-card.png"
-              alt="New Arrival"
-              fill
-              className="object-cover"
-            />
-            <div className="flex flex-col items-center gap-2  absolute top-4 left-4 ">
-              <p className="flex  flex-col px-2 py-1 rounded-xs text-[#141718] bg-white w-[67px] h-[24px] items-center justify-center text-[12px] font-semibold">
-                New
-              </p>
-              <p className="h-[24px] w-[71px] flex items-center justify-center text-white bg-[#38CB89] rounded-xs ">
-                -50%
-              </p>
-            </div>
-            <Image
-              src="/addto-wishlist.png"
-              alt="add to cart"
-              width={32}
-              height={32}
-              className="absolute top-4 right-4 cursor-pointer object-cover"
-            />
-            <button className="absolute bottom-4 left-1/2 bg-[#000] w-[203px] h-[40px] text-white text-[14px] font-semibold cursor-pointer transform -translate-x-1/2 rounded-lg">
-              Add to cart
-            </button>
-          </div>
-          <div className="flex flex-col mt-2 gap-1">
-            <div className="flex items-center gap-1">
-              {Array(5)
-                .fill(0)
-                .map((_, index) => (
-                  <Image
-                    src="/star Icon.png"
-                    alt="review"
-                    width={16}
-                    height={16}
-                    className="object-cover"
-                    key={index}
+      <div className="w-full md:h-[442px]  flex gap-4 overflow-x-auto scrollbar-hide snap-x overflow-y-hidden">
+      <div className="flex flex-1">
+                  <MobileProductCardVariant
+                    imgSrc="/desktop-pillow.png"
+                    title="Large Beige Pillow"
+                    price={3.99}
+                    newStock={true}
+                    discount={true}
+                    discountPrice={50}
                   />
-                ))}
-            </div>
-            <p className="">Loveseat Sofa</p>
-            <div className="flex items-center gap-2">
-              <span className="text-[#141718]">$199.00</span>
-              <strike className="text-[#6C7275]">$400.00</strike>
-            </div>
-          </div>
-        </div>
-        <div className="flex flex-col">
-          <div className="w-[231px] h-[307px] md:h-[349px] md:w-[262px] bg-[#6C7275] relative">
-            <Image
-              src="/product-card.png"
-              alt="New Arrival"
-              fill
-              className="object-cover"
-            />
-            <div className="flex flex-col items-center gap-2  absolute top-4 left-4 ">
-              <p className="flex  flex-col px-2 py-1 rounded-xs text-[#141718] bg-white w-[67px] h-[24px] items-center justify-center text-[12px] font-semibold">
-                New
-              </p>
-              <p className="h-[24px] w-[71px] flex items-center justify-center text-white bg-[#38CB89] rounded-xs ">
-                -50%
-              </p>
-            </div>
-            <Image
-              src="/addto-wishlist.png"
-              alt="add to cart"
-              width={32}
-              height={32}
-              className="absolute top-4 right-4 cursor-pointer object-cover"
-            />
-            <button className="absolute bottom-4 left-1/2 bg-[#000] w-[203px] h-[40px] text-white text-[14px] font-semibold cursor-pointer transform -translate-x-1/2 rounded-lg">
-              Add to cart
-            </button>
-          </div>
-          <div className="flex flex-col mt-2 gap-1">
-            <div className="flex items-center gap-1">
-              {Array(5)
-                .fill(0)
-                .map((_, index) => (
-                  <Image
-                    src="/star Icon.png"
-                    alt="review"
-                    width={16}
-                    height={16}
-                    className="object-cover"
-                    key={index}
+                </div>
+                <div className="flex flex-1">
+                  <MobileProductCardVariant
+                    imgSrc="/desktop-table-lamp.png"
+                    title="Table Lamp"
+                    price={9.9}
+                    newStock={true}
+                    discount={true}
+                    discountPrice={50}
                   />
-                ))}
-            </div>
-            <p className="">Loveseat Sofa</p>
-            <div className="flex items-center gap-2">
-              <span className="text-[#141718]">$199.00</span>
-              <strike className="text-[#6C7275]">$400.00</strike>
-            </div>
-          </div>
-        </div>
-        <div className="flex flex-col">
-          <div className="w-[231px] h-[307px] md:h-[349px] md:w-[262px] bg-[#6C7275] relative">
-            <Image
-              src="/product-card.png"
-              alt="New Arrival"
-              fill
-              className="object-cover"
-            />
-            <div className="flex flex-col items-center gap-2  absolute top-4 left-4 ">
-              <p className="flex  flex-col px-2 py-1 rounded-xs text-[#141718] bg-white w-[67px] h-[24px] items-center justify-center text-[12px] font-semibold">
-                New
-              </p>
-              <p className="h-[24px] w-[71px] flex items-center justify-center text-white bg-[#38CB89] rounded-xs ">
-                -50%
-              </p>
-            </div>
-            <Image
-              src="/addto-wishlist.png"
-              alt="add to cart"
-              width={32}
-              height={32}
-              className="absolute top-4 right-4 cursor-pointer object-cover"
-            />
-            <button className="absolute bottom-4 left-1/2 bg-[#000] w-[203px] h-[40px] text-white text-[14px] font-semibold cursor-pointer transform -translate-x-1/2 rounded-lg">
-              Add to cart
-            </button>
-          </div>
-          <div className="flex flex-col mt-2 gap-1">
-            <div className="flex items-center gap-1">
-              {Array(5)
-                .fill(0)
-                .map((_, index) => (
-                  <Image
-                    src="/star Icon.png"
-                    alt="review"
-                    width={16}
-                    height={16}
-                    className="object-cover"
-                    key={index}
+                </div>
+
+                <div className="flex flex-1">
+                  <MobileProductCardVariant
+                    imgSrc="/bamboo-basket.png"
+                    title="Bamboo Basket"
+                    price={9.99}
+                    newStock={true}
+                    discount={true}
+                    discountPrice={50}
                   />
-                ))}
-            </div>
-            <p className="">Loveseat Sofa</p>
-            <div className="flex items-center gap-2">
-              <span className="text-[#141718]">$199.00</span>
-              <strike className="text-[#6C7275]">$400.00</strike>
-            </div>
-          </div>
-        </div>
-        <div className="flex flex-col">
-          <div className="w-[231px] h-[307px] md:h-[349px] md:w-[262px] bg-[#6C7275] relative">
-            <Image
-              src="/product-card.png"
-              alt="New Arrival"
-              fill
-              className="object-cover"
-            />
-            <div className="flex flex-col items-center gap-2  absolute top-4 left-4 ">
-              <p className="flex  flex-col px-2 py-1 rounded-xs text-[#141718] bg-white w-[67px] h-[24px] items-center justify-center text-[12px] font-semibold">
-                New
-              </p>
-              <p className="h-[24px] w-[71px] flex items-center justify-center text-white bg-[#38CB89] rounded-xs ">
-                -50%
-              </p>
-            </div>
-            <Image
-              src="/addto-wishlist.png"
-              alt="add to cart"
-              width={32}
-              height={32}
-              className="absolute top-4 right-4 cursor-pointer object-cover"
-            />
-            <button className="absolute bottom-4 left-1/2 bg-[#000] w-[203px] h-[40px] text-white text-[14px] font-semibold cursor-pointer transform -translate-x-1/2 rounded-lg">
-              Add to cart
-            </button>
-          </div>
-          <div className="flex flex-col mt-2 gap-1">
-            <div className="flex items-center gap-1">
-              {Array(5)
-                .fill(0)
-                .map((_, index) => (
-                  <Image
-                    src="/star Icon.png"
-                    alt="review"
-                    width={16}
-                    height={16}
-                    className="object-cover"
-                    key={index}
+                </div>
+                  <div className="flex flex-1">
+                  <MobileProductCardVariant
+                    imgSrc="/desktop-product-card.png"
+                    title="LoveSeat Sofa"
+                    price={199.0}
+                    showOldPrice={true}
+                    oldPrice={400}
+                    newStock={true}
+                    discount={true}
+                    discountPrice={50}
                   />
-                ))}
-            </div>
-            <p className="">Loveseat Sofa</p>
-            <div className="flex items-center gap-2">
-              <span className="text-[#141718]">$199.00</span>
-              <strike className="text-[#6C7275]">$400.00</strike>
-            </div>
-          </div>
-        </div>
-        <div className="flex flex-col">
-          <div className="w-[231px] h-[307px] md:h-[349px] md:w-[262px] bg-[#6C7275] relative">
-            <Image
-              src="/product-card.png"
-              alt="New Arrival"
-              fill
-              className="object-cover"
-            />
-            <div className="flex flex-col items-center gap-2  absolute top-4 left-4 ">
-              <p className="flex  flex-col px-2 py-1 rounded-xs text-[#141718] bg-white w-[67px] h-[24px] items-center justify-center text-[12px] font-semibold">
-                New
-              </p>
-              <p className="h-[24px] w-[71px] flex items-center justify-center text-white bg-[#38CB89] rounded-xs ">
-                -50%
-              </p>
-            </div>
-            <Image
-              src="/addto-wishlist.png"
-              alt="add to cart"
-              width={32}
-              height={32}
-              className="absolute top-4 right-4 cursor-pointer object-cover"
-            />
-            <button className="absolute bottom-4 left-1/2 bg-[#000] w-[203px] h-[40px] text-white text-[14px] font-semibold cursor-pointer transform -translate-x-1/2 rounded-lg">
-              Add to cart
-            </button>
-          </div>
-          <div className="flex flex-col mt-2 gap-1">
-            <div className="flex items-center gap-1">
-              {Array(5)
-                .fill(0)
-                .map((_, index) => (
-                  <Image
-                    src="/star Icon.png"
-                    alt="review"
-                    width={16}
-                    height={16}
-                    className="object-cover"
-                    key={index}
+                </div>
+                <div className="flex flex-1">
+                  <MobileProductCardVariant
+                    imgSrc="/desktop-luxury-sofa.png"
+                    title="Luxury Sofa"
+                    price={299.0}
+                    showOldPrice={true}
+                    oldPrice={500}
+                    newStock={true}
+                    discount={true}
+                    discountPrice={50}
                   />
-                ))}
-            </div>
-            <p className="">Loveseat Sofa</p>
-            <div className="flex items-center gap-2">
-              <span className="text-[#141718]">$199.00</span>
-              <strike className="text-[#6C7275]">$400.00</strike>
-            </div>
-          </div>
-        </div>
+                </div>
+
+                <div className="flex flex-1">
+                  <MobileProductCardVariant
+                    imgSrc="/desktop-lampp.png"
+                    title="Table Lamp"
+                    price={99.0}
+                    newStock={true}
+                    discount={true}
+                    discountPrice={70}
+                  />
+                </div>
       </div>
       {/* RULE DIVIDER */}
       <div className="flex px-8 md:px-25 w-full md:hidden">

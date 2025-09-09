@@ -4,7 +4,7 @@ import Image from "next/image";
 
 function Footer() {
   return (
-    <footer className="flex flex-col items-center justify-center md:justify-between w-full mt-10 bg-[#141718] px-8 md:px-25 py-12 gap-8">
+    <footer className="flex flex-col items-center justify-center md:justify-between w-full  bg-[#141718] px-8 md:px-25 py-12 gap-8">
       {/* TOP */}
       <div className="flex flex-col md:flex-row items-center justify-between gap-8 w-full">
         {/* TOP */}

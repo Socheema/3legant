@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import Breadcrumb from "./BreadCrumb";
 
 function HeroComponent() {
   return (
@@ -16,6 +17,9 @@ function HeroComponent() {
             fill
             className="hidden md:block object-cover"
           />
+          <div className="flex items-center justify-center absolute top-4 left-1/2 transform -translate-x-1/2">
+            <Breadcrumb items={[{ label: "Home" }]} />
+          </div>
         </div>
 
         <div className="flex flex-col md:flex-row items-start gap-4 justify-between">
