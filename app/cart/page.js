@@ -1,89 +1,189 @@
-"use client"
-
-import CartProductCard from "../../components/cartProductCard";
-import Image from "next/image";
+"use client";
 import React from "react";
-import Link from "next/link";
+import Image from "next/image";
+import Navbar from "../../components/navbar";
+import { useEffect } from "react";
 import { useState } from "react";
-import { usePathname } from "next/navigation";
-
+import CartBreadcrumb from "../../components/CartBreadCrumb";
+import CartProductCard from "../../components/cartProductCard";
 
 function CartPage() {
-  const pathname = usePathname();
-
-  const [isCartOpen, setIsCartOpen] = useState(true);
-
-  const cartToggler = () => {
-    setIsCartOpen(!isCartOpen);
-    pathname.href.push("/");
-  };
+  const [showDiscountBanner, setShowDiscountBanner] = useState(false);
+  useEffect(() => {
+    setShowDiscountBanner(true);
+  }, []);
 
   return (
-    <div>
-      {isCartOpen && (
-        <div className="flex bg-[#6C7275] pl-8 md:pl-0 md:bg-[#FEFEFE] relative">
-          <div className="flex flex-col p-8 md:py-4 items-center justify-between w-full md:w-2/5 bg-[#FEFEFE] absolute right-0 top-0">
-            {/* HEADING */}
-            <div className="flex items-center justify-between w-full">
-              <h1 className="text-3xl font-bold text-black/900">Cart</h1>
+    <>
+      {showDiscountBanner && (
+        <div className="md:hidden flex px-8 gap-[22px] bg-[#F3F5F7] w-full items-center  py-2  h-9">
+          <div className="  w-[360px]  flex items-center justify-center h-5">
+            <div className=" h-[24px] flex items-center justify-between gap-2">
               <Image
-                src="/close.png"
-                alt="line"
-                width={28}
-                height={28}
-                onClick={cartToggler}
+                src="/ticket-percent.svg"
+                alt="logo"
+                width={20}
+                height={18}
+              />
+              <div className="">
+                <p className="w-[233px] h-[22px] flex items-center text-[14px]">
+                  30% off storewide - Limited time!
+                </p>
+              </div>
+            </div>
+          </div>
+          <Image
+            src="/close.png"
+            width={16}
+            height={16}
+            className=" cursor-pointer"
+            alt="close"
+            onClick={() => setShowDiscountBanner(!showDiscountBanner)}
+          />
+        </div>
+      )}
+      <Navbar />
+      <div className="pt-4 pb-10 gap-10 flex flex-col w-full px-8 md:px-25 items-center">
+        <div className="flex gap-2 items-center self-start">
+          <Image
+            src="/images/products/vector.png"
+            alt="cart"
+            width={8}
+            height={8}
+          />
+          <p className="black/600">back</p>
+        </div>
+        <div className="flex flex-col w-full gap-6">
+          <h1 className="px-8 text-4xl font-semibold self-center">Cart</h1>
+          <div className="w-full flex justify-center pb-4 overflow-x-auto overflow-visible">
+            <CartBreadcrumb
+              items={[
+                { label: "Shopping cart" },
+                { label: "Checkout", href: "/checkout" },
+                { label: "Payment", href: "/payment" },
+              ]}
+            />
+          </div>
+        </div>
+        {/* PRODUCT */}
+        <div>
+          <div className="flex flex-col gap-6 w-full">
+            <p className="text-lg text-black/900">Product</p>
+            <div>
+              <CartProductCard
+                imgSrc="/cart-product-img.png"
+                title="Tray Table"
+                color="Black"
+                quantity="2"
+                price="19.99"
+              />
+              <CartProductCard
+                imgSrc="/table-red.png"
+                title="Tray Table"
+                color="Red"
+                quantity="6"
+                price="109.99"
+              />
+              <CartProductCard
+                imgSrc="/table-lamp.png"
+                title="Table Lamp"
+                color="gold"
+                quantity="1"
+                price="1.99"
               />
             </div>
-            {/* CART ITEMS */}
-            <CartProductCard
-              imgSrc="/cart-product-img.png"
-              title="Tray Table"
-              color="Black"
-              quantity="2"
-              price="19.99"
-            />
-            <CartProductCard
-              imgSrc="/table-red.png"
-              title="Tray Table"
-              color="Red"
-              quantity="6"
-              price="109.99"
-            />
-            <CartProductCard
-              imgSrc="/table-lamp.png"
-              title="Table Lamp"
-              color="gold"
-              quantity="1"
-              price="1.99"
-            />
-
-            {/* TOTAL & CHECKOUT */}
-            <div className="flex flex-col w-full mt-25 items-center justify-between gap-4">
-              <div className="flex items-center justify-between w-full border-b border-b-[#E8ECEF] pb-2">
-                <h2 className="text-lg font-bold text-[#141718]">Subtotal</h2>
-                <p className="text-xl font-semibold text-black/900">$129.97</p>
+            {/* Coupon */}
+          </div>
+          <div className="flex flex-col">
+            <div className="flex flex-col items-center justify-between py-8 gap-4 w-full">
+              <div className="flex flex-col gap-2">
+                <p className="text-[#141718]">Have a coupon</p>
+                <p className="text-[#6C7275]">
+                  Add your code for an instant cart discount
+                </p>
               </div>
-              <div className="flex items-center justify-between w-full pb-2">
-                <h2 className="text-2xl font-bold text-[#141718]">Total</h2>
-                <p className="text-xl font-semibold text-black/900">$529.97</p>
+              <div className="flex items center justify-between w-full border border-[#6C7275] px-4 py-2 relative">
+                <input
+                  type="text "
+                  placeholder="Coupon Code "
+                  className=" pl-6 border-none outline-none w-full placeholder:text-[#6C7275] "
+                />
+                <p className="text-black/900 text-lg">Apply</p>
+                <Image
+                  src="/ticket-percent.svg"
+                  width={16}
+                  height={16}
+                  className="absolute left-4 top-1/2 transform -translate-y-1/2"
+                />
               </div>
-              <Link href="/checkout" className="w-full">
-                <button className=" py-2 px-4 bg-black text-white rounded-md text-lg w-full cursor-pointer">
-                  Checkout
-                </button>
-              </Link>
-              <Link
-                href="/cart"
-                className="flex items-
-                center text-xs cursor-pointer border-b"
-              >
-                View cart
-              </Link>
+            </div>
+            {/* CART SUMMARY */}
+            <div className="flex flex-col gap-4 py-6 w-full border border-[#E6E8EB] rounded-md px-4">
+              <p>Summary</p>
+              <div>
+                <div className="flex flex-col gap-4 w-full">
+                  <div className=" flex items-center justify-between border rounded-md py-2 px-4">
+                    <div>
+                      <input type="radio" name="payment" id="free-shipping" />
+                      <label
+                        htmlFor="free-shipping"
+                        className="p-2 text-lg text-[#141718]"
+                      >
+                        Free Shipping
+                      </label>
+                    </div>
+                    <span>$0.00</span>
+                  </div>
+                  <div className=" flex items-center justify-between border rounded-md py-2 px-4">
+                    <div>
+                      {" "}
+                      <input
+                        type="radio"
+                        name="payment"
+                        id="Express-shipping"
+                      />
+                      <label
+                        htmlFor="Express-shipping"
+                        className="p-2 text-lg text-[#141718]"
+                      >
+                        Express Shipping
+                      </label>
+                    </div>
+                    <span>$15.00</span>
+                  </div>
+                  <div className=" flex items-center justify-between border rounded-md py-2 px-4">
+                    <div>
+                      <input type="radio" name="payment" id="pick-up" />
+                      <label
+                        htmlFor="pick-up"
+                        className="p-2 text-lg text-[#141718]"
+                      >
+                        Pick Up
+                      </label>
+                    </div>
+                    <span>%21.00</span>
+                  </div>
+                </div>
+                {/* TOTAL */}
+                <div className="flex flex-col items-center justify-between gap-4 mt-8">
+                  <div className="flex items-center justify-between w-full">
+                    <p className="text-[#141718] text-lg font-semibold">Subtotal:</p>
+                    <p className="text-[#141718] font-semibold text-lg">1234.00</p>
+                  </div>
+                  <div className="flex items-center justify-between w-full">
+                    <p className="text-[#141718] text-lg font-semibold">Total</p>
+                    <p className="text-[#141718] text-lg font-semibold">1345.00</p>
+                  </div>
+                  <button className="bg-black text-white py-2 px-4 rounded-md w-full">
+                    Checkout
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      )}
-    </div>
+      </div>
+    </>
   );
 }
 
