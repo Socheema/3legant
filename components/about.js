@@ -52,7 +52,7 @@ function About() {
           </div>
         </div>
         {/* DESKTOP */}
-        <div className="hidden md:flex items-center justify-between gap-4 w-full border">
+        <div className="hidden md:flex items-center justify-between gap-4 w-full">
           {/* FREE SHIPPING */}
           <div >
         

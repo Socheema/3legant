@@ -9,7 +9,7 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata = {
-  title: "Chi E-Commerce Application",
+  title: "3legant E-Commerce Application",
   description: "A complete e-commerce application with Next.js and Wix",
 };
 
