@@ -5,9 +5,11 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 import ActiveMobileMenu from "./activeMobileMenu";
 import CartComponent from "./CartComponent";
+import DiscountBannerCard from "../components/DiscountBannerCard"
+DiscountBannerCard
 
 
-function Navbar() {
+function Navbar({ showBanner = false }) {
   const pathname = usePathname();
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -19,36 +21,10 @@ function Navbar() {
   return (
     <>
       {/* LIMITED OFFER */}
-      <div className="hidden  bg-[#F3F5F7] w-full md:flex items-center ">
-        <div className="mr-auto"></div>
-        <div className="  w-[360px] h-[24px] flex items-center justify-center">
-          <div className=" h-[24px] flex items-center justify-between gap-2">
-            <Image
-              src="/ticket-percent.svg"
-              alt="logo"
-              width={20}
-              height={18}
-            />
-            <div className="">
-              <p className="w-[233px] h-[22px] flex items-center text-[14px]">
-                30% off storewide - Limited time!
-              </p>
-            </div>
-          </div>
-          <div className="flex items-center gap-[2px]">
-            <p className="w-[62px] text-[#377DFF] flex items-center text-[12px] border-b border-[#377DFF]">
-              Shop Now
-            </p>
-            <Image src="/arrow-right.png" alt="arrow" width={12} height={12} />
-          </div>
-        </div>
-        <Image
-          src="/close.png"
-          width={8}
-          height={8}
-          className="ml-auto mr-2 cursor-pointer"
-        />
-      </div>
+    <div className="hidden md:flex">
+      {showBanner && <DiscountBannerCard />}
+    </div>
+    
       <div className=" hidden md:flex flex-col mx-25">
         <div className="flex items-center justify-between h-[60px]">
           <Image src="/3legant.png" alt="logo" width={105} height={24} />

@@ -7,6 +7,7 @@ import { useState } from "react";
 import CartBreadcrumb from "../../components/CartBreadCrumb";
 import CartProductCard from "../../components/cartProductCard";
 import DesktopCartProductCard from "../../components/DesktopCartProductCard";
+import Link from "next/link";
 
 function CartPage() {
   const [showDiscountBanner, setShowDiscountBanner] = useState(false);
@@ -17,7 +18,7 @@ function CartPage() {
   return (
     <>
       {showDiscountBanner && (
-        <div className="md:hidden flex px-8 gap-[22px] bg-[#F3F5F7] w-full items-center  py-2  h-9">
+        <div className=" flex md:hidden px-8 gap-[22px] bg-[#F3F5F7] w-full items-center  py-2  h-9">
           <div className="  w-[360px]  flex items-center justify-center h-5">
             <div className=" h-[24px] flex items-center justify-between gap-2">
               <Image
@@ -196,9 +197,7 @@ hidden md:flex px-4"
                       1345.00
                     </p>
                   </div>
-                  <button className="bg-black text-white py-2 px-4 rounded-md w-full">
-                    Checkout
-                  </button>
+            <Link href="/checkout" className="hidden md:flex items-center justify-center rounded-md px-4 py-3 cursor-pointer bg-black text-white w-full">Proceed to Checkout</Link>
                 </div>
               </div>
             </div>

@@ -9,10 +9,11 @@ export default function ConditionalLayout({ children }) {
   const showNavbar = !pathname.includes('/admin') && 
                      !pathname.includes('/login') && 
                      !pathname.includes('/cart') && 
+                     !pathname.includes('/checkout') && 
+                     !pathname.includes('/payment') && 
                      !pathname.includes('/signup');
-                     
-  const showFooter = !pathname.includes('/checkout') && 
-                     !pathname.includes('/admin') && 
+
+  const showFooter = !pathname.includes('/admin') && 
                      !pathname.includes('/login') && 
                      !pathname.includes('/signup');
 
