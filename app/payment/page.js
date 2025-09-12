@@ -6,9 +6,12 @@ import { useEffect } from "react";
 import { useState } from "react";
 import CartBreadcrumb from "../../components/CartBreadCrumb";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+
 
 function PaymentConfirmationPage() {
   const [showDiscountBanner, setShowDiscountBanner] = useState(false);
+  const router = useRouter();
   useEffect(() => {
     setShowDiscountBanner(true);
   }, []);
@@ -44,7 +47,7 @@ function PaymentConfirmationPage() {
       )}
       <Navbar />
       <div className="pt-4 pb-10 gap-10 flex flex-col w-full px-8 md:px-25 items-center ">
-        <div className="flex gap-2 items-center self-start md:hidden">
+        <div className="flex gap-2 items-center self-start md:hidden" onClick={() => router.push("/checkout")}>
           <Image
             src="/images/products/vector.png"
             alt="cart"
@@ -66,7 +69,7 @@ function PaymentConfirmationPage() {
               ]}
             />
           </div>
-          <div className="px-4 flex flex-col gap-10 items-center shadow-2xl shadow-black/10 py-8 md:py-16 w-full md:w-[600px] lg:w-[700px] rounded-lg">
+          <div className="px-4 flex flex-col gap-10 items-center  py-8 md:py-8 w-full md:w-[600px] lg:w-[700px] rounded-lg shadow-2xl shadow-black/10">
             <div className="flex flex-col gap-4 items-start md:items-center">
               <small className="text-[#6C7275] md:text-lg">Thank you 🎉 </small>
               <h2 className="text-2xl font-semibold md:text-4xl">
@@ -165,10 +168,7 @@ function PaymentConfirmationPage() {
                 </small>
               </div>
             </div>
-            <Link
-              href="/shop"
-              className="cursor-pointer"
-            >
+            <Link href="/shop" className="cursor-pointer">
               <button className="bg-black text-white py-3 px-4 rounded-full w-full md:max-w-max">
                 Purchase history
               </button>

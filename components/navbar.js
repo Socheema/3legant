@@ -1,16 +1,19 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
 import ActiveMobileMenu from "./activeMobileMenu";
 import CartComponent from "./CartComponent";
 import DiscountBannerCard from "../components/DiscountBannerCard"
-DiscountBannerCard
+
+
+
 
 
 function Navbar({ showBanner = false }) {
   const pathname = usePathname();
+  const router = useRouter();
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(false);
@@ -56,6 +59,7 @@ function Navbar({ showBanner = false }) {
               width={24}
               height={24}
               className="cursor-pointer"
+              onClick={() => router.push('/account')}
             />
             <div className="flex items-center gap-1">
                   <Image

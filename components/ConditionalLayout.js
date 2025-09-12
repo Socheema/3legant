@@ -11,6 +11,7 @@ export default function ConditionalLayout({ children }) {
                      !pathname.includes('/cart') && 
                      !pathname.includes('/checkout') && 
                      !pathname.includes('/payment') && 
+                     !pathname.includes('/account') && 
                      !pathname.includes('/signup');
 
   const showFooter = !pathname.includes('/admin') && 

@@ -8,9 +8,11 @@ import CartBreadcrumb from "../../components/CartBreadCrumb";
 import CartProductCard from "../../components/cartProductCard";
 import DesktopCartProductCard from "../../components/DesktopCartProductCard";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 function CartPage() {
   const [showDiscountBanner, setShowDiscountBanner] = useState(false);
+  const router = useRouter();
   useEffect(() => {
     setShowDiscountBanner(true);
   }, []);
@@ -46,7 +48,10 @@ function CartPage() {
       )}
       <Navbar />
       <div className="pt-4 pb-10 gap-10 flex flex-col w-full px-8 md:px-25 items-center ">
-        <div className="flex gap-2 items-center self-start md:hidden">
+        <div
+          className="flex gap-2 items-center self-start md:hidden"
+          onClick={() => router.back()}
+        >
           <Image
             src="/images/products/vector.png"
             alt="cart"
@@ -56,7 +61,9 @@ function CartPage() {
           <p className="black/600">back</p>
         </div>
         <div className="flex flex-col w-full gap-6 items-center justify-center">
-          <h1 className="px-8 text-4xl font-semibold self-center md:mt-6">Cart</h1>
+          <h1 className="px-8 text-4xl font-semibold self-center md:mt-6">
+            Cart
+          </h1>
           <div className="w-full flex items-center justify-center pb-4 overflow-x-auto overflow-visible md:overflow-x-clip">
             <CartBreadcrumb
               items={[
@@ -197,34 +204,39 @@ hidden md:flex px-4"
                       1345.00
                     </p>
                   </div>
-            <Link href="/checkout" className="hidden md:flex items-center justify-center rounded-md px-4 py-3 cursor-pointer bg-black text-white w-full">Proceed to Checkout</Link>
+                  <Link
+                    href="/checkout"
+                    className="hidden md:flex items-center justify-center rounded-md px-4 py-3 cursor-pointer bg-black text-white w-full"
+                  >
+                    Proceed to Checkout
+                  </Link>
                 </div>
               </div>
             </div>
           </div>
         </div>
-         <div className="flex flex-col items-center self-start py-8 md:py-0 gap-4 min-w-[300px] max-w-[500px]">
-              <div className="flex flex-col gap-2">
-                <p className="text-[#141718]">Have a coupon</p>
-                <p className="text-[#6C7275]">
-                  Add your code for an instant cart discount
-                </p>
-              </div>
-              <div className="flex items center justify-between w-full border border-[#6C7275] px-4 py-2 relative">
-                <input
-                  type="text "
-                  placeholder="Coupon Code "
-                  className=" pl-6 border-none outline-none w-full placeholder:text-[#6C7275] "
-                />
-                <p className="text-black/900 text-lg">Apply</p>
-                <Image
-                  src="/ticket-percent.svg"
-                  width={16}
-                  height={16}
-                  className="absolute left-4 top-1/2 transform -translate-y-1/2"
-                />
-              </div>
-            </div>
+        <div className="flex flex-col items-center self-start py-8 md:py-0 gap-4 min-w-[300px] max-w-[500px]">
+          <div className="flex flex-col gap-2">
+            <p className="text-[#141718]">Have a coupon</p>
+            <p className="text-[#6C7275]">
+              Add your code for an instant cart discount
+            </p>
+          </div>
+          <div className="flex items center justify-between w-full border border-[#6C7275] px-4 py-2 relative">
+            <input
+              type="text "
+              placeholder="Coupon Code "
+              className=" pl-6 border-none outline-none w-full placeholder:text-[#6C7275] "
+            />
+            <p className="text-black/900 text-lg">Apply</p>
+            <Image
+              src="/ticket-percent.svg"
+              width={16}
+              height={16}
+              className="absolute left-4 top-1/2 transform -translate-y-1/2"
+            />
+          </div>
+        </div>
       </div>
     </>
   );
