@@ -4,6 +4,7 @@ import Image from "next/image";
 import Navbar from "../../components/navbar";
 import { useEffect } from "react";
 import { useState } from "react";
+import Link from "next/link";
 
 function AccountPage() {
   const accountDetails = ["Account", "Address", "Orders", "Wishlist", "Logout"];
@@ -714,9 +715,11 @@ function AccountPage() {
               >
                 Cancel
               </button>
-              <button className="bg-red-600 text-white px-6 py-2 rounded-md">
-                Logout
-              </button>
+              <Link href="/" className="cursor-pointer">
+                <button className="bg-red-600 text-white px-6 py-2 rounded-md">
+                  Logout
+                </button>
+              </Link>
             </div>
           </div>
         );

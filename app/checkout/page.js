@@ -402,7 +402,7 @@ function CheckoutPage() {
             </div>
           
           </form>
-                  <button className="hidden md:flex items-center justify-center rounded-md px-4 py-3 cursor-pointer bg-black text-white w-full">Place Order</button>
+                <Link href="/payment">  <button className="hidden md:flex items-center justify-center rounded-md px-4 py-3 cursor-pointer bg-black text-white w-full">Place Order</button></Link>
           </div>
        
           {/* ORDER SUMMARY */}

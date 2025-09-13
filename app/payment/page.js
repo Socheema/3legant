@@ -169,7 +169,7 @@ function PaymentConfirmationPage() {
               </div>
             </div>
             <Link href="/shop" className="cursor-pointer">
-              <button className="bg-black text-white py-3 px-4 rounded-full w-full md:max-w-max">
+              <button className="bg-black text-white py-3 px-4 rounded-full w-full md:max-w-max cursor-pointer">
                 Purchase history
               </button>
             </Link>

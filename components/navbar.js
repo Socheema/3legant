@@ -5,11 +5,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
 import ActiveMobileMenu from "./activeMobileMenu";
 import CartComponent from "./CartComponent";
-import DiscountBannerCard from "../components/DiscountBannerCard"
-
-
-
-
+import DiscountBannerCard from "../components/DiscountBannerCard";
 
 function Navbar({ showBanner = false }) {
   const pathname = usePathname();
@@ -17,6 +13,7 @@ function Navbar({ showBanner = false }) {
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const [showSearch, setShowSearch] = useState(false);
 
   const isHomePage = (href) =>
     pathname === href ? "text-[#141718]" : "text-[#6C7275]";
@@ -24,11 +21,11 @@ function Navbar({ showBanner = false }) {
   return (
     <>
       {/* LIMITED OFFER */}
-    <div className="hidden md:flex">
-      {showBanner && <DiscountBannerCard />}
-    </div>
-    
-      <div className=" hidden md:flex flex-col mx-25">
+      <div className="hidden md:flex">
+        {showBanner && <DiscountBannerCard />}
+      </div>
+
+      <div className=" hidden md:flex flex-col mx-25 mb-8">
         <div className="flex items-center justify-between h-[60px]">
           <Image src="/3legant.png" alt="logo" width={105} height={24} />
           <div className="flex items-center justify-between gap-4 h-[18px] max-w-[545px]">
@@ -45,6 +42,15 @@ function Navbar({ showBanner = false }) {
               Contact Us
             </Link>
           </div>
+          {showSearch && (
+            <form action="">
+              <input
+                type="text"
+                placeholder="Search..."
+                className="border border-neutral-03 px-4 py-2 rounded-md outline-none placeholder:text-neutral-04 w-full"
+              />
+            </form>
+          )}
           <div className="flex items-center gap-4">
             <Image
               src="/search 02.svg"
@@ -52,6 +58,7 @@ function Navbar({ showBanner = false }) {
               width={24}
               height={24}
               className="cursor-pointer"
+              onClick={() => setShowSearch(!showSearch)}
             />
             <Image
               src="/user-circle.svg"
@@ -59,17 +66,17 @@ function Navbar({ showBanner = false }) {
               width={24}
               height={24}
               className="cursor-pointer"
-              onClick={() => router.push('/account')}
+              onClick={() => router.push("/account")}
             />
             <div className="flex items-center gap-1">
-                  <Image
-                  src="/shopping bag.svg"
-                  alt="cart"
-                  width={24}
-                  height={24}
-                  className="cursor-pointer"
-                  onClick={() => setIsCartOpen(!isCartOpen)}
-                />
+              <Image
+                src="/shopping bag.svg"
+                alt="cart"
+                width={24}
+                height={24}
+                className="cursor-pointer"
+                onClick={() => setIsCartOpen(!isCartOpen)}
+              />
               <span className=" bg-black text-white text-[8px] rounded-full w-4 h-4 flex items-center justify-center">
                 0
               </span>
@@ -90,14 +97,14 @@ function Navbar({ showBanner = false }) {
           <Image src="/3legant.png" alt="logo" width={70} height={24} />
         </div>
         <div className="flex items-center gap-2 h-[28px] w-[50px]">
-         <Image
-              src="/shopping bag.svg"
-              alt="shopping cart"
-              width={24}
-              height={24}
-              className="cursor-pointer"
-              onClick={() => setIsCartOpen(!isCartOpen)}
-            />
+          <Image
+            src="/shopping bag.svg"
+            alt="shopping cart"
+            width={24}
+            height={24}
+            className="cursor-pointer"
+            onClick={() => setIsCartOpen(!isCartOpen)}
+          />
           <span className=" bg-black text-white text-[8px] rounded-full w-4 h-4 flex items-center justify-center">
             0
           </span>
