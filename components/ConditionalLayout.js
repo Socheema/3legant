@@ -20,6 +20,7 @@ export default function ConditionalLayout({ children }) {
     !pathname.includes("/login") &&
     !pathname.includes("/signup");
 
+
   return (
     <>
       {showNavbar && <Navbar />}

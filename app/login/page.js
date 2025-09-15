@@ -2,9 +2,11 @@
 import React from "react";
 import Image from "next/image";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 function Login() {
   const [passwordVisible, setPasswordVisible] = useState(false);
+  const router = useRouter();
   const seePassword = () => {
     setPasswordVisible(!passwordVisible);
   };
@@ -83,7 +85,8 @@ function Login() {
         </form>
         <button
           type="submit"
-          className="bg-[#141718] text-white p-1 rounded-sm w-full"
+          className="bg-[#141718] text-white p-1 rounded-sm w-full cursor-pointer"
+          onClick={() => router.push("/account")}
         >
           Sign In
         </button>

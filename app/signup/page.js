@@ -2,9 +2,13 @@
 import React from "react";
 import Image from "next/image";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
+
 
 function SignUp() {
   const [passwordVisible, setPasswordVisible] = useState(false);
+  
+  const router = useRouter();
   const seePassword = () => {
     setPasswordVisible(!passwordVisible);
   };
@@ -94,6 +98,7 @@ function SignUp() {
         <button
           type="submit"
           className="bg-[#141718] text-white p-1 rounded-sm w-full"
+          onClick ={()=> router.push("/login")}
         >
           Sign Up
         </button>

@@ -5,19 +5,29 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 import CartComponent from "./CartComponent";
 
+
 function ActiveMobileMenu() {
   const pathname = usePathname();
+
 
   const [openMenu, setOpenMenu] = useState(true);
   const [isCartOpen, setIsCartOpen] = useState(false);
 
-  const isHomePage = (href) =>
-    pathname === href ? "text-[#141718]" : "text-[#6C7275]";
+  // Simplified function to just return className
+  const getLinkClassName = (href) => {
+    return pathname === href ? "text-[#141718]" : "text-[#6C7275]";
+  };
+
+  // Function to handle link clicks
+  const handleLinkClick = () => {
+    setOpenMenu(false);
+  };
+
   return (
     <>
       {openMenu ? (
         <div className="flex flex-col p-8 absolute left-0 top-0 z-20 bg-[#FFFFFF] w-full h-[calc(100vh-80px)] gap-6 shadow-[0_4px_30px_rgba(0,0,0,0.1)]">
-            {isCartOpen && <CartComponent />}
+          {isCartOpen && <CartComponent />}
           <div className="flex items-center  justify-between">
             <Image
               src="/3legant.png"
@@ -46,22 +56,20 @@ function ActiveMobileMenu() {
               className="w-full rounded-md outline-0 text-[#6C7275] "
             />
           </form>
-        
+
           <div className="flex flex-col items-start justify-between gap-2 mb-auto">
             <Link
               href="/"
-              className={`${isHomePage(
-                "/"
-              )} border-b border-[#E8ECEF] w-full py-2 `}
+              className={`${getLinkClassName("/")} border-b border-[#E8ECEF] w-full py-2`}
+              onClick={handleLinkClick}
             >
               Home
             </Link>
             <div className="flex items-center justify-between w-full">
               <Link
                 href="/shop"
-                className={`${isHomePage(
-                  "/shop"
-                )} border-b border-[#E8ECEF] w-full py-2 `}
+                className={`${getLinkClassName("/shop")} border-b border-[#E8ECEF] w-full py-2`}
+                onClick={handleLinkClick}
               >
                 Shop
               </Link>
@@ -75,10 +83,9 @@ function ActiveMobileMenu() {
             </div>
             <div className="flex items-center justify-between w-full">
               <Link
-                href="/products"
-                className={`${isHomePage(
-                  "/products"
-                )} border-b border-[#E8ECEF] w-full py-2 `}
+                href="/product"
+                className={`${getLinkClassName("/products")} border-b border-[#E8ECEF] w-full py-2`}
+                onClick={handleLinkClick}
               >
                 Products
               </Link>
@@ -92,9 +99,8 @@ function ActiveMobileMenu() {
             </div>
             <Link
               href="/contact"
-              className={`${isHomePage(
-                "/contact"
-              )} border-b border-[#E8ECEF] w-full py-2 `}
+              className={`${getLinkClassName("/contact")} border-b border-[#E8ECEF] w-full py-2`}
+              onClick={handleLinkClick}
             >
               Contact Us
             </Link>
@@ -129,11 +135,11 @@ function ActiveMobileMenu() {
             </div>
             {/* BOTTOM */}
             <div className="flex items-center flex-col w-full gap-2">
-             <a href="/login " className="w-full">
-              <button className="w-full bg-black text-white h-[40px] rounded-md">
-                Sign In
-              </button>
-             </a>
+              <a href="/login" className="w-full" onClick={handleLinkClick}>
+                <button className="w-full bg-black text-white h-[40px] rounded-md">
+                  Sign In
+                </button>
+              </a>
               <div className="flex self-start gap-4">
                 <Image
                   src="/instagram.svg"

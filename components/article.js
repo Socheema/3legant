@@ -15,9 +15,9 @@ function Article() {
 
       {/* ARTICLE CARD */}
      <div className="flex flex-col md:flex-row w-full gap-6 md:gap-8">
-      <ArticleCard title="7 ways to decor your home" imgSrc="/img.png" alt="7 ways to decor your home"/>
-      <ArticleCard title="Kitchen organization" imgSrc="/img container.png" alt="Kitchen organization"/>
-      <ArticleCard title="Decorate your bedroom" imgSrc="/img container (1).png" alt="Decorate your bedroom"/>
+      <ArticleCard title="7 ways to decor your home" imgSrc="/img.png" alt="7 ways to decor your home" ShopNowStatus={true} shopnow="Shop Now" />
+      <ArticleCard title="Kitchen organization" imgSrc="/img container.png" alt="Kitchen organization" ShopNowStatus={true} shopnow="Shop Now" />
+      <ArticleCard title="Decorate your bedroom" imgSrc="/img container (1).png" alt="Decorate your bedroom" ShopNowStatus={true} shopnow="Shop Now" />
      </div>
     </div>
   );

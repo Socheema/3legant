@@ -66,7 +66,7 @@ function Navbar({ showBanner = false }) {
               width={24}
               height={24}
               className="cursor-pointer"
-              onClick={() => router.push("/account")}
+              onClick={() => router.push("/login")}
             />
             <div className="flex items-center gap-1">
               <Image
