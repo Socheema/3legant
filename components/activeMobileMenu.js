@@ -1,14 +1,13 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
 import CartComponent from "./CartComponent";
 
-
 function ActiveMobileMenu() {
   const pathname = usePathname();
-
+  const router = useRouter();
 
   const [openMenu, setOpenMenu] = useState(true);
   const [isCartOpen, setIsCartOpen] = useState(false);
@@ -60,7 +59,9 @@ function ActiveMobileMenu() {
           <div className="flex flex-col items-start justify-between gap-2 mb-auto">
             <Link
               href="/"
-              className={`${getLinkClassName("/")} border-b border-[#E8ECEF] w-full py-2`}
+              className={`${getLinkClassName(
+                "/"
+              )} border-b border-[#E8ECEF] w-full py-2`}
               onClick={handleLinkClick}
             >
               Home
@@ -68,7 +69,9 @@ function ActiveMobileMenu() {
             <div className="flex items-center justify-between w-full">
               <Link
                 href="/shop"
-                className={`${getLinkClassName("/shop")} border-b border-[#E8ECEF] w-full py-2`}
+                className={`${getLinkClassName(
+                  "/shop"
+                )} border-b border-[#E8ECEF] w-full py-2`}
                 onClick={handleLinkClick}
               >
                 Shop
@@ -83,8 +86,10 @@ function ActiveMobileMenu() {
             </div>
             <div className="flex items-center justify-between w-full">
               <Link
-                href="/product"
-                className={`${getLinkClassName("/products")} border-b border-[#E8ECEF] w-full py-2`}
+                href="/products"
+                className={`${getLinkClassName(
+                  "/products"
+                )} border-b border-[#E8ECEF] w-full py-2`}
                 onClick={handleLinkClick}
               >
                 Products
@@ -99,7 +104,9 @@ function ActiveMobileMenu() {
             </div>
             <Link
               href="/contact"
-              className={`${getLinkClassName("/contact")} border-b border-[#E8ECEF] w-full py-2`}
+              className={`${getLinkClassName(
+                "/contact"
+              )} border-b border-[#E8ECEF] w-full py-2`}
               onClick={handleLinkClick}
             >
               Contact Us
@@ -117,6 +124,7 @@ function ActiveMobileMenu() {
                     width={24}
                     height={24}
                     onClick={() => setIsCartOpen(!isCartOpen)}
+                    className="cursor-pointer"
                   />
                   <span className=" bg-black text-white text-[8px] rounded-full w-4 h-4 flex items-center justify-center">
                     0
@@ -126,7 +134,13 @@ function ActiveMobileMenu() {
               <div className="flex items-center justify-between w-full">
                 <p className="text-[#6C7275]">Whishlist</p>
                 <div className="flex items-center gap-2 ml-auto">
-                  <Image src="/line.png" alt="cart" width={24} height={24} />
+                  <Image
+                    src="/line.png"
+                    alt="cart"
+                    width={24}
+                    height={24}
+                    onClick={() => router.push("/account")}
+                  />
                   <span className=" bg-black text-white text-[8px] rounded-full w-4 h-4 flex items-center justify-center">
                     0
                   </span>
