@@ -11,10 +11,12 @@ function HeroComponent() {
             src="/slider-mobile.png"
             fill
             className="md:hidden object-cover"
+            alt="Hero Image"
           />
           <Image
             src="/Slider.png"
             fill
+            alt="Hero Image"
             className="hidden md:block object-cover"
           />
           <div className="flex items-center justify-center absolute top-4 left-1/2 transform -translate-x-1/2">

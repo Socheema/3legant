@@ -12,7 +12,6 @@ import Newsletter from "../components/newsletter";
 function HomePage() {
   return (
     <>
-     
       <HeroComponent />
       <MainComponent />
       <NewArrivals />

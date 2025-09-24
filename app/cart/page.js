@@ -9,9 +9,12 @@ import CartProductCard from "../../components/cartProductCard";
 import DesktopCartProductCard from "../../components/DesktopCartProductCard";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import useCartStore from "../../store/cartStore";
 
 function CartPage() {
   const [showDiscountBanner, setShowDiscountBanner] = useState(false);
+  const cartItems = useCartStore((s) => s.cart);
+  const getTotal = useCartStore((s) => s.getTotal());
   const router = useRouter();
   useEffect(() => {
     setShowDiscountBanner(true);
@@ -77,64 +80,35 @@ function CartPage() {
         {/* PRODUCT */}
         <div className="flex flex-col md:flex-row w-full gap-16">
           <div className="flex flex-col gap-6 w-full md:flex-2">
-            <div className="flex items-center w-full">
-              <p className="text-lg text-black/900 w-2/5">Product</p>
-              <div
-                className="items-center justify-between w-3/5
-hidden md:flex px-4"
-              >
-                <p className="text-lg text-black/900 ">Quantity</p>
-                <p className="text-lg text-black/900 ">Price</p>
-                <p className="text-lg text-black/900 ">Subtotal</p>
-              </div>
+            <div className="flex items-center justify-between w-full border-b border-b-[#E8ECEF] pb-4 pl-4">
+              <p className="text-lg text-black/900 ">Product</p>
+              <p className="text-lg text-black/900 ">Subtotal</p>
             </div>
             {/* MOBILE */}
             <div className="md:hidden">
-              <CartProductCard
-                imgSrc="/cart-product-img.png"
-                title="Tray Table"
-                color="Black"
-                quantity="2"
-                price="19.99"
-              />
-              <CartProductCard
-                imgSrc="/table-red.png"
-                title="Tray Table"
-                color="Red"
-                quantity="6"
-                price="109.99"
-              />
-              <CartProductCard
-                imgSrc="/table-lamp.png"
-                title="Table Lamp"
-                color="gold"
-                quantity="1"
-                price="1.99"
-              />
+              {cartItems?.map((item) => (
+                <CartProductCard
+                  key={item.id}
+                  id={item.id}
+                  imgSrc={item.image}
+                  title={item.title}
+                  price={item.price}
+                  quantity={item.quantity}
+                />
+              ))}
             </div>
             {/* DESKTOP */}
             <div className="hidden md:flex flex-col self-start w-full">
-              <DesktopCartProductCard
-                imgSrc="/cart-product-img.png"
-                title="Tray Table"
-                color="Black"
-                quantity="2"
-                price="19.99"
-              />
-              <DesktopCartProductCard
-                imgSrc="/cart-product-img.png"
-                title="Tray Table"
-                color="Black"
-                quantity="2"
-                price="19.99"
-              />
-              <DesktopCartProductCard
-                imgSrc="/cart-product-img.png"
-                title="Tray Table"
-                color="Black"
-                quantity="2"
-                price="19.99"
-              />
+              {cartItems?.map((item) => (
+                <CartProductCard
+                  key={item.id}
+                  id={item.id}
+                  imgSrc={item.image}
+                  title={item.title}
+                  price={item.price}
+                  quantity={item.quantity}
+                />
+              ))}
             </div>
             {/* Coupon */}
           </div>
@@ -193,7 +167,7 @@ hidden md:flex px-4"
                       Subtotal:
                     </p>
                     <p className="text-[#141718] font-semibold text-lg">
-                      1234.00
+                      {getTotal.toFixed(2)}
                     </p>
                   </div>
                   <div className="flex items-center justify-between w-full">
@@ -201,12 +175,12 @@ hidden md:flex px-4"
                       Total
                     </p>
                     <p className="text-[#141718] text-lg font-semibold">
-                      1345.00
+                      {getTotal.toFixed(2)}
                     </p>
                   </div>
                   <Link
                     href="/checkout"
-                    className="hidden md:flex items-center justify-center rounded-md px-4 py-3 cursor-pointer bg-black text-white w-full"
+                    className="flex items-center justify-center rounded-md px-4 py-3 cursor-pointer bg-black text-white w-full"
                   >
                     Proceed to Checkout
                   </Link>

@@ -24,7 +24,7 @@ function Footer() {
             <Link href="/shop">Shop</Link>
           </li>
           <li className="hover:text-white list-none text-sm text-[#6C7275] md:text-white">
-            <Link href="/product">Product</Link>
+            <Link href="/products">Product</Link>
           </li>
           <li className="hover:text-white list-none text-sm text-[#6C7275] md:text-white">
             <Link href="/blog">Blog</Link>
