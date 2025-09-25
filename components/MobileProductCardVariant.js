@@ -3,6 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import useCartStore from "../store/cartStore";
+import { Star } from 'lucide-react';
 
 
 import Link from "next/link";
@@ -15,7 +16,7 @@ function MobileProductCardVariant({ product }) {
   }
 
   return (
-    <div className="flex flex-col w-[129px] h-full md:h-[393px] md:w-[242px] rounded-md group">
+    <div className="flex flex-col w-[129px] h-full md:h-[393px] md:w-[242px] rounded-md group md:mb-8">
       <Link href={`/shop/${product.id}`} className="w-full">
         <div className="w-[140px] h-[173px] md:h-[319px] md:w-[232px] bg-[#F3F5F7] relative">
           <Image
@@ -29,7 +30,7 @@ function MobileProductCardVariant({ product }) {
 
       <div className="flex flex-col items-start gap-2 mt-2">
         <button
-          className="bg-black text-white text-xs md:text-xl px-2 py-1 md:px-3 md:py-1 rounded-full w-max cursor-pointer"
+          className="bg-black text-white text-[8px] md:text-[12px] px-2 py-1 md:px-2 md:py-1 rounded-full w-max cursor-pointer"
           onClick={() => addToCart(product)}
         >
           Add to cart
@@ -42,14 +43,7 @@ function MobileProductCardVariant({ product }) {
             {Array(5)
               .fill(0)
               .map((_, index) => (
-                <Image
-                  src="/star Icon.png"
-                  alt="review"
-                  width={10}
-                  height={10}
-                  className="object-cover"
-                  key={index}
-                />
+               <Star key={index} size={12} color="#FFC107" />
               ))}
           </div>
           <p className="text-sm truncate w-[100px]">{product.title}</p>

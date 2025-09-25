@@ -119,7 +119,7 @@ function Shop() {
         </div>
 
         {/* PRODUCT GRID */}
-        <div className="w-full">
+        <div className="w-full ">
           {products.length === 0 ? (
             <div className="flex items-center justify-center h-40">
               <p className="text-gray-500 text-sm">Loading products...</p>
@@ -210,7 +210,7 @@ function Shop() {
           </div>
 
           {/* PRODUCT GRID */}
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-15">
             {products.length === 0 ? (
               <p>Loading Products...</p>
             ) : filteredProducts.length > 0 ? (

@@ -12,12 +12,14 @@ import Newsletter from "../components/newsletter";
 function HomePage() {
   return (
     <>
-      <HeroComponent />
+   <div className="flex flex-col  gap-8">
+       <HeroComponent />
       <MainComponent />
       <NewArrivals />
       <About />
       <Article />
       <Newsletter />
+   </div>
 
     </>
   );
