@@ -1,7 +1,10 @@
 "use client";
+/* eslint-disable react/no-unescaped-entities */
 import React from "react";
 import Image from "next/image";
 import useCartStore from "../store/cartStore";
+
+
 import Link from "next/link";
 
 function MobileProductCardVariant({ product }) {

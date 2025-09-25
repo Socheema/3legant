@@ -1,4 +1,5 @@
 "use client";
+/* eslint-disable react/no-unescaped-entities */
 import React, { useState } from "react";
 import Image from "next/image";
 import MoreProductsCard from "./MoreProductsCard";
@@ -110,13 +111,13 @@ function ProductReviewCard({ product }) {
                 className="text-lg bg-red-700 text-white rounded-md py-2 w-full"
                 onClick={() => addToCart(product)}
               >
-                Delete <span className="hidden md:flex"> From Cart</span>
+                Delete <span className="hidden md:inline-block"> From Cart</span>
               </button>
               <button
                 className="text-lg bg-[#141718] text-white rounded-md py-2 w-full"
                 onClick={() => addToCart(product)}
               >
-                <span className="hidden md:flex">Proceed to</span> checkout
+                <span className="hidden md:inline-block">Proceed to</span> checkout
               </button>
             </div>
           </div>

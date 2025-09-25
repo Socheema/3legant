@@ -29,8 +29,8 @@ function SingleProductPage() {
   if (!product) return <div>Loading...</div>;
 
   return (
-    <div className="flex flex-col px-8 py-4 md:px-25 w-full">
-      <ProductImageCard product={product} />
+    <div className="flex flex-col md:flex-row md:gap-15 px-8 py-4 md:px-25 w-full">
+    <div className="md:w-[30%]">  <ProductImageCard product={product} /></div>
       <ProductReviewCard product={product} />
     </div>
   );
