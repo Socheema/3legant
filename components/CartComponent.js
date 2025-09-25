@@ -1,4 +1,5 @@
 "use client";
+/* eslint-disable react/no-unescaped-entities */
 
 import CartProductCard from "./cartProductCard";
 import Image from "next/image";

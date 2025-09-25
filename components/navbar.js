@@ -45,9 +45,7 @@ function Navbar({ showBanner = false }) {
             <Link href="/shop" className={`${isHomePage("/shop")}`}>
               Shop
             </Link>
-            <Link href="/products" className={`${isHomePage("/products")}`}>
-              Products
-            </Link>
+
             <Link href="/contact" className={`${isHomePage("/contact")}`}>
               Contact Us
             </Link>
