@@ -1,42 +1,30 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
-import { useState } from "react";
 import MoreProductsCard from "./MoreProductsCard";
 import ShopNow from "./shopNow";
 import RuleDividerCard from "./RuleDividerCard";
+import useCartStore from "../store/cartStore";
+import ReadMore from "../components/ReadMore";
 
-function ProductReviewCard() {
-  const [isAccordionOpen, setIsAccordionOpen] = useState(false);
+function ProductReviewCard({ product }) {
+  const addToCart = useCartStore((s) => s.addToCart);
+  const decreaseQuantity = useCartStore((s) => s.decreaseQuantity);
+  const updateQuantity = useCartStore((s) => s.updateQuantity);
+  const cart = useCartStore((s) => s.cart);
 
-  const productImages = [
-    "/images/products/product-tray-table.png",
-    "/images/products/product-tray-table1.png",
-    "/images/products/product-tray-table2.png",
-    "/images/products/product-tray-table3.png",
-    "/images/products/product-tray-table4.png",
-    "/images/products/product-tray-table5.png",
+  // Find product in the cart
+  const cartItem = cart.find((item) => item.id === product?.id);
+  const quantity = cartItem ? cartItem.quantity : 0;
 
-    // Add more image paths as needed
-  ];
+  if (!product) return null;
 
   return (
-    <div className="py-4 ">
+    <div className="py-4">
       <div className="flex flex-col md:flex-row w-full md:gap-15 items-start">
-        <div className="hidden md:flex flex-1 flex-wrap gap-6 w-full">
-          {productImages.map((src, index) => (
-            <div key={index} className="w-full max-w-[262px] min-w-[150px] flex-1 relative" style={{ aspectRatio: '3 / 4' }}>
-              <Image
-                src={src}
-                alt={`Product image ${index + 1}`}
-                fill
-                className="absolute object-cover"
-              />
-            </div>
-          ))}
-        </div>
+        {/* PRODUCT INFO */}
         <div className="py-4 md:py-0 flex flex-col gap-4 w-full md:flex-1">
-          {/* REVIEW */}
+          {/* Reviews + Title */}
           <div className="flex flex-col items-start w-full justify-between gap-3 border-b border-[#E8ECEF]">
             <div className="flex items-center gap-1">
               {Array(5)
@@ -53,15 +41,13 @@ function ProductReviewCard() {
                 ))}
               <p className="text-sm text-[#141718]">11 Reviews</p>
             </div>
-            <p className="text-[#141718] text-2xl">Tray Table</p>
-            <small className="text-[#6C7275]">
-              Buy one or buy a few and make every space where you sit more
-              convenient. Light and easy to move around with removable tray top,
-              handy for serving snacks.
-            </small>
+            <p className="text-[#141718] text-2xl">{product?.title}</p>
+            <ReadMore text={product?.description} maxLength={120} />
             <div className="flex items-center gap-2 pb-2">
-              <p className="text-black/900 text-lg">$199.99</p>
-              <strike className="text-[#6C7275] text-sm">$249.99</strike>
+              <p className="text-black/900 text-lg">${product?.price}</p>
+              <strike className="text-[#6C7275] text-sm">
+                ${product?.price}
+              </strike>
             </div>
           </div>
 
@@ -70,11 +56,11 @@ function ProductReviewCard() {
             <small className="text-[#343839]">Offer expires in:</small>
             <table className="w-full self-start">
               <thead>
-                <tr className="text-[#141718]  font-semibold text-2xl">
-                  <td className="text-center ">02</td>
-                  <td className="text-center ">12</td>
-                  <td className="text-center ">45</td>
-                  <td className="text-center ">05</td>
+                <tr className="text-[#141718] font-semibold text-2xl">
+                  <td className="text-center">02</td>
+                  <td className="text-center">12</td>
+                  <td className="text-center">45</td>
+                  <td className="text-center">05</td>
                 </tr>
               </thead>
               <tbody>
@@ -87,183 +73,59 @@ function ProductReviewCard() {
               </tbody>
             </table>
           </div>
-          {/* MEASUREMENTS*/}
-          <div className="flex flex-col items-start justify-between gap-3 w-full">
-            <div className="flex flex-col items-start mb-6 gap-2">
-              <small className="text-[#6C7275]">Measurements</small>
-              <p>17 1/2*20 5/8 "</p>
-            </div>
-            <div className="flex flex-col items-start mb-6 gap-2 w-full">
-              <div className="flex items-center gap-3">
-                <small className="text-[#6C7275]">Choose Color</small>
-                <Image
-                  src="/images/products/product-arrow-icon.png"
-                  height={8}
-                  width={8}
-                />
+
+          {/* ACTIONS */}
+          <div className="flex flex-col gap-4 w-full">
+            <div className="flex gap-4 w-full items-center">
+              <div className="flex gap-3 items-center px-4 py-2 bg-[#F3F5F7] rounded-md">
+                <button
+                  className="text-2xl"
+                  onClick={() => {
+                    if (quantity > 1) decreaseQuantity(product.id);
+                  }}
+                >
+                  -
+                </button>
+                {quantity > 0 && <p className="text-lg">{quantity}</p>}
+                <button
+                  className="text-2xl"
+                  onClick={() => updateQuantity(product.id, quantity + 1)}
+                >
+                  +
+                </button>
               </div>
-              <p>Black</p>
-              <Image
-                src="/images/products/product-img-options.png"
-                height={54}
-                width={154}
-              />
-            </div>
-          </div>
-          <div>
-            {/* WISHLIST */}
-            <div className="flex items-start justify-between gap-4 flex-col">
-              <div className="flex gap-4 w-full items-center">
-                <div className="flex gap-3 items-center  px-4 py-2 bg-[#F3F5F7] rounded-md ">
-                  <button className="text-2xl">-</button>
-                  <p className="text-lg">2</p>
-                  <button className="text-2xl">+</button>
-                </div>
-                <div className="flex gap-3  px-8 items-center py-2 border rounded-md border-black/900">
-                  <Image src="/line.png" height={24} width={24} />
-                  <p className="text-lg">Wishlist</p>
-                </div>
+              <div className="flex gap-3 px-8 items-center py-2 border rounded-md border-black/900">
+                <Image src="/line.png" height={24} width={24} alt="wishlist" />
+                <p className="text-lg">Wishlist</p>
               </div>
-              <button className="text-lg bg-[#141718] text-white rounded-md py-2 w-full">
+            </div>
+            <div className="flex items-center  gap-2 w-full">
+              <button
+                className="text-lg bg-[#141718] text-white rounded-md py-2 w-full"
+                onClick={() => addToCart(product)}
+              >
                 Add to Cart
               </button>
-            </div>
-            {/* CATEGORY */}
-            <div className="flex flex-col items-start justify-between py-6 gap-3 w-full">
-              <div className="w-full flex items-center gap-5">
-                <p className="text-[#6C7275]">SKU</p>
-                <p className="text-[#141718]">123456</p>
-              </div>
-              <div className="w-full flex items-center gap-5">
-                <p className="text-[#6C7275]">CATEGORY</p>
-                <p className="text-[#141718]">Living Room, Bedroom</p>
-              </div>
-            </div>
-            {/* ADDITIONAL INFO */}
-            <div className="flex flex-col items-start gap-2  overflow-y-auto w-full">
-              <div className="container flex flex-col items-start gap-2 w-full border-b">
-                <div
-                  className="flex items-center justify-between w-full py-2 "
-                  onClick={() => setIsAccordionOpen(!isAccordionOpen)}
-                >
-                  <p className="text-[#141718] text-2xl">
-                    Additional Information
-                  </p>
-                  {isAccordionOpen ? (
-                    <Image
-                      src="/images/products/chevron-up.png"
-                      height={24}
-                      width={24}
-                    />
-                  ) : (
-                    <Image src="/chevron-down.png" height={24} width={24} />
-                  )}
-                </div>
-                {isAccordionOpen && (
-                  <div className="flex items-start gap-4 w-full flex-col">
-                    <div className="flex flex-col gap-2">
-                      <p className="text-[#6C7275] text-lg">Details</p>
-                      <p className="text-sm">
-                        You can use the removable tray for serving. The design
-                        makes it easy to put the tray back after use since you
-                        place it directly on the table frame without having to
-                        fit it into any holes.
-                      </p>
-                    </div>
-                    <div className="flex flex-col gap-2">
-                      <p className="text-[#6C7275] text-lg">Packaging</p>
-                      <p className="text-[#141718] text-sm ">
-                        Width: 20 " Height: 1 ½ " Length: 21 ½ " <br />
-                        Weight: 7 lb 8 oz <br />
-                        Package(s): 1
-                      </p>
-                    </div>
-                  </div>
-                )}
-              </div>
-              <div className="container flex flex-col items-start gap-2 w-full border-b">
-                <div
-                  className="flex items-center justify-between w-full py-2 "
-                  onClick={() => setIsAccordionOpen(!isAccordionOpen)}
-                >
-                  <p className="text-[#141718] text-2xl">Questions</p>
-                  {isAccordionOpen ? (
-                    <Image
-                      src="/images/products/chevron-up.png"
-                      height={24}
-                      width={24}
-                    />
-                  ) : (
-                    <Image src="/chevron-down.png" height={24} width={24} />
-                  )}
-                </div>
-                {isAccordionOpen && (
-                  <div className="flex items-start gap-4 w-full flex-col">
-                    <div className="flex flex-col gap-2">
-                      <p className="text-[#6C7275] text-lg">Details</p>
-                      <p className="text-sm">
-                        You can use the removable tray for serving. The design
-                        makes it easy to put the tray back after use since you
-                        place it directly on the table frame without having to
-                        fit it into any holes.
-                      </p>
-                    </div>
-                    <div className="flex flex-col gap-2">
-                      <p className="text-[#6C7275] text-lg">Packaging</p>
-                      <p className="text-[#141718] text-sm">
-                        Width: 20 " Height: 1 ½ " Length: 21 ½ " <br />
-                        Weight: 7 lb 8 oz <br />
-                        Package(s): 1
-                      </p>
-                    </div>
-                  </div>
-                )}
-              </div>
-              <div className="container flex flex-col items-start gap-2 w-full border-b">
-                <div
-                  className="flex items-center justify-between w-full py-2 "
-                  onClick={() => setIsAccordionOpen(!isAccordionOpen)}
-                >
-                  <p className="text-[#141718] text-2xl">Reviews (11)</p>
-                  {isAccordionOpen ? (
-                    <Image
-                      src="/images/products/chevron-up.png"
-                      height={24}
-                      width={24}
-                    />
-                  ) : (
-                    <Image src="/chevron-down.png" height={24} width={24} />
-                  )}
-                </div>
-                {isAccordionOpen && (
-                  <div className="flex items-start gap-4 w-full flex-col">
-                    <div className="flex flex-col gap-2">
-                      <p className="text-[#6C7275] text-lg">Details</p>
-                      <p className="text-sm">
-                        You can use the removable tray for serving. The design
-                        makes it easy to put the tray back after use since you
-                        place it directly on the table frame without having to
-                        fit it into any holes.
-                      </p>
-                    </div>
-                    <div className="flex flex-col gap-2">
-                      <p className="text-[#6C7275] text-lg">Packaging</p>
-                      <p className="text-[#141718] text-sm">
-                        Width: 20 " Height: 1 ½ " Length: 21 ½ " <br />
-                        Weight: 7 lb 8 oz <br />
-                        Package(s): 1
-                      </p>
-                    </div>
-                  </div>
-                )}
-              </div>
+              <button
+                className="text-lg bg-red-700 text-white rounded-md py-2 w-full"
+                onClick={() => addToCart(product)}
+              >
+                Delete <span className="hidden md:flex"> From Cart</span>
+              </button>
+              <button
+                className="text-lg bg-[#141718] text-white rounded-md py-2 w-full"
+                onClick={() => addToCart(product)}
+              >
+                <span className="hidden md:flex">Proceed to</span> checkout
+              </button>
             </div>
           </div>
         </div>
       </div>
+
       {/* ADDITIONAL PRODUCTS */}
       <div className="flex flex-col pt-8 mt-4 gap-10 items-start w-full">
-        <div className="flex items-start  md:items-center justify-between w-full">
+        <div className="flex items-start md:items-center justify-between w-full">
           <p className="text-3xl">You might also like</p>
           <div className="hidden md:flex">
             <ShopNow text="More Products" fontSize="text-lg" />

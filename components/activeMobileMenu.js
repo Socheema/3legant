@@ -2,15 +2,23 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import CartComponent from "./CartComponent";
+import useCartStore from "../store/cartStore";
 
 function ActiveMobileMenu() {
   const pathname = usePathname();
   const router = useRouter();
+  const cartItems = useCartStore((s) => s.getItemCount());
 
   const [openMenu, setOpenMenu] = useState(true);
   const [isCartOpen, setIsCartOpen] = useState(false);
+
+    const [hasMounted, setHasMounted] = useState(false);
+  
+    useEffect(() => {
+      setHasMounted(true);
+    }, []);
 
   // Simplified function to just return className
   const getLinkClassName = (href) => {
@@ -127,7 +135,11 @@ function ActiveMobileMenu() {
                     className="cursor-pointer"
                   />
                   <span className=" bg-black text-white text-[8px] rounded-full w-4 h-4 flex items-center justify-center">
-                    0
+                    {hasMounted && cartItems > 0 && (
+                      <span className=" bg-black text-white text-[8px] rounded-full w-4 h-4 flex items-center justify-center cursor-pointer">
+                        {cartItems}
+                      </span>
+                    )}
                   </span>
                 </div>
               </div>
