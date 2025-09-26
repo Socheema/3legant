@@ -92,24 +92,7 @@ function ActiveMobileMenu() {
                 className="cursor-pointer"
               />
             </div>
-            <div className="flex items-center justify-between w-full">
-              <Link
-                href="/products"
-                className={`${getLinkClassName(
-                  "/products"
-                )} border-b border-[#E8ECEF] w-full py-2`}
-                onClick={handleLinkClick}
-              >
-                Products
-              </Link>
-              <Image
-                src="/chevron-down.png"
-                alt="more options"
-                width={24}
-                height={24}
-                className="cursor-pointer"
-              />
-            </div>
+          
             <Link
               href="/contact"
               className={`${getLinkClassName(

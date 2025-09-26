@@ -6,17 +6,16 @@ import MobileProductCardVariant from "./MobileProductCardVariant";
 import RuleDividerCard from "./RuleDividerCard";
 import { useState, useEffect } from "react";
 import { getProducts } from "../api/products";
+import Link from "next/link";
 
 function NewArrivals() {
   const [products, setProducts] = useState([]);
-
 
   useEffect(() => {
     const fetchProducts = async () => {
       const products = await getProducts();
       setProducts(products);
     };
-  
 
     fetchProducts();
   }, []);
@@ -31,9 +30,10 @@ function NewArrivals() {
           New <br />
           Arrivals
         </h1>
-        <div className="hidden md:flex ml-auto">
+
+        <Link href="/shop" className="hidden md:flex ml-auto">
           <ShopNow text="More Products" fontSize="lg" />
-        </div>
+        </Link>
       </div>
       <div className="w-full md:h-[442px]  flex gap-4 overflow-x-auto scrollbar-hide snap-x overflow-y-hidden">
         <div className="flex gap-8 md:gap-16 snap-x">
@@ -51,9 +51,6 @@ function NewArrivals() {
         <div className="flex-1 bg-[#6C7275]"></div>
       </div> */}
       {/* MORE PRODUCTS */}
-      <div className="md:hidden">
-        <ShopNow text="More Products" fontSize="lg" />
-      </div>
     </div>
   );
 }

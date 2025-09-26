@@ -4,9 +4,9 @@ import React, { useState } from "react";
 import Image from "next/image";
 import MoreProductsCard from "./MoreProductsCard";
 import ShopNow from "./shopNow";
-import RuleDividerCard from "./RuleDividerCard";
 import useCartStore from "../store/cartStore";
 import ReadMore from "../components/ReadMore";
+import Link from "next/link";
 
 function ProductReviewCard({ product }) {
   const addToCart = useCartStore((s) => s.addToCart);
@@ -21,7 +21,7 @@ function ProductReviewCard({ product }) {
   if (!product) return null;
 
   return (
-    <div className="py-4">
+    <div className="py-4 md:w-[65%]">
       <div className="flex flex-col md:flex-row w-full md:gap-15 items-start">
         {/* PRODUCT INFO */}
         <div className="py-4 md:py-0 flex flex-col gap-4 w-full md:flex-1">
@@ -100,7 +100,7 @@ function ProductReviewCard({ product }) {
                 <p className="text-lg">Wishlist</p>
               </div>
             </div>
-            <div className="flex items-center  gap-2 w-full">
+            <div className="flex items-center  gap-2 w-full md:mb-5">
               <button
                 className="text-lg bg-[#141718] text-white rounded-md py-2 w-full"
                 onClick={() => addToCart(product)}
@@ -111,13 +111,15 @@ function ProductReviewCard({ product }) {
                 className="text-lg bg-red-700 text-white rounded-md py-2 w-full"
                 onClick={() => addToCart(product)}
               >
-                Delete <span className="hidden md:inline-block"> From Cart</span>
+                Delete{" "}
+                <span className="hidden md:inline-block"> From Cart</span>
               </button>
               <button
                 className="text-lg bg-[#141718] text-white rounded-md py-2 w-full"
                 onClick={() => addToCart(product)}
               >
-                <span className="hidden md:inline-block">Proceed to</span> checkout
+                <span className="hidden md:inline-block">Proceed to</span>{" "}
+                checkout
               </button>
             </div>
           </div>
@@ -128,15 +130,14 @@ function ProductReviewCard({ product }) {
       <div className="flex flex-col pt-8 mt-4 gap-10 items-start w-full">
         <div className="flex items-start md:items-center justify-between w-full">
           <p className="text-3xl">You might also like</p>
-          <div className="hidden md:flex">
+          <Link href="/shop" className="hidden md:flex">
             <ShopNow text="More Products" fontSize="text-lg" />
-          </div>
+          </Link>
         </div>
-        <MoreProductsCard />
-        <RuleDividerCard />
-        <div className="md:hidden">
-          <ShopNow text="More Products" fontSize="text-lg" />
-        </div>
+        <MoreProductsCard
+          category={product?.category}
+          currentProductId={product?.id}
+        />
       </div>
     </div>
   );
