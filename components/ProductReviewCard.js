@@ -14,6 +14,7 @@ function ProductReviewCard({ product }) {
   const updateQuantity = useCartStore((s) => s.updateQuantity);
   const cart = useCartStore((s) => s.cart);
 
+
   // Find product in the cart
   const cartItem = cart.find((item) => item.id === product?.id);
   const quantity = cartItem ? cartItem.quantity : 0;
@@ -21,7 +22,7 @@ function ProductReviewCard({ product }) {
   if (!product) return null;
 
   return (
-    <div className="py-4 md:w-[65%]">
+    <div className="py-4 md:w-[65%] md:h-[calc(100vh-4rem)] md:overflow-y-auto scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-gray-200">
       <div className="flex flex-col md:flex-row w-full md:gap-15 items-start">
         {/* PRODUCT INFO */}
         <div className="py-4 md:py-0 flex flex-col gap-4 w-full md:flex-1">
@@ -107,20 +108,14 @@ function ProductReviewCard({ product }) {
               >
                 Add to Cart
               </button>
-              <button
-                className="text-lg bg-red-700 text-white rounded-md py-2 w-full"
-                onClick={() => addToCart(product)}
-              >
-                Delete{" "}
-                <span className="hidden md:inline-block"> From Cart</span>
-              </button>
-              <button
-                className="text-lg bg-[#141718] text-white rounded-md py-2 w-full"
-                onClick={() => addToCart(product)}
+           
+              <Link
+                className="text-lg bg-[#141718] text-white rounded-md py-2 w-full text-center"
+                href="/checkout"
               >
                 <span className="hidden md:inline-block">Proceed to</span>{" "}
                 checkout
-              </button>
+              </Link>
             </div>
           </div>
         </div>
