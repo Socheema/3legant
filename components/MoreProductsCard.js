@@ -28,7 +28,7 @@ function MoreProductsCard({ category, currentProductId }) {
   }
 
   return (
-    <div className="flex gap-6 overflow-x-auto w-full">
+    <div className="flex gap-6 overflow-x-auto w-full scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-gray-200">
       {relatedProducts.map((p) => (
         <div key={p.id}>
           {/* ✅ Pass the product into your card component */}

@@ -1,17 +1,14 @@
-"use client"
-import { useEffect,  useState  } from "react";
+"use client";
+import { useEffect, useState } from "react";
 import ProductImageCard from "../../../components/ProductImageCard";
 import ProductReviewCard from "../../../components/ProductReviewCard";
 import { useParams } from "next/navigation";
 
-
-
 function SingleProductPage() {
-  const {id} = useParams();
-  const [product, setProduct] = useState(null)
+  const { id } = useParams();
+  const [product, setProduct] = useState(null);
 
-  
- useEffect(() => {
+  useEffect(() => {
     if (!id) return;
     const fetchProduct = async () => {
       try {
@@ -29,8 +26,11 @@ function SingleProductPage() {
   if (!product) return <div>Loading...</div>;
 
   return (
-    <div className="flex flex-col md:flex-row md:gap-15 px-8 py-4 md:px-25 w-full">
-    <div className="md:w-[30%]">  <ProductImageCard product={product} /></div>
+    <div className="flex flex-col md:flex-row md:gap-15 px-8 py-4 md:px-25 w-full md:h-screen">
+      <div className="md:w-[30%]">
+        {" "}
+        <ProductImageCard product={product} />
+      </div>
       <ProductReviewCard product={product} />
     </div>
   );
